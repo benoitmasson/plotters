@@ -1,3 +1,9 @@
+// Package piechart implements a pie chart plotter for package
+// github.com/gonum/plot.
+//
+// Pies rendering is fully customizable (see below).
+// In particular, multiple pies can be combined on one chart,
+// thanks to the Offset and Total attributes.
 package piechart
 
 import (
@@ -135,7 +141,7 @@ func NewPieChart(vs plotter.Valuer) (*PieChart, error) {
 	return pie, nil
 }
 
-// Plot implements the plot.Plotter interface.
+// Plot implements the https://godoc.org/github.com/gonum/plot#Plotter interface.
 func (p *PieChart) Plot(c draw.Canvas, plt *plot.Plot) {
 	trX, trY := plt.Transforms(&c)
 
@@ -211,6 +217,9 @@ func computeValueAngle(v, total float64) float64 {
 
 // rotatePoint rotates point pt by angle (in radians), with respect to
 // point ref, and returns the new point.
+//
+// Should be a method for the vg.Point structure, but as long as it isn't,
+// we define it here.
 func rotatePoint(pt, ref vg.Point, angle float64) vg.Point {
 	return vg.Point{
 		X: vg.Length(float64(pt.X-ref.X)*math.Cos(angle)-
@@ -222,16 +231,16 @@ func rotatePoint(pt, ref vg.Point, angle float64) vg.Point {
 	}
 }
 
-// DataRange implements the plot.DataRanger interface.
+// DataRange implements the https://godoc.org/github.com/gonum/plot#DataRanger interface.
 //
 // A pie chart is always defined in the range (-1, -1) to (1, 1).
-// If something different is required, change the X/YOffset or Radius
+// If something different is required, change the Offset.X/Y or Radius
 // attributes of the PieChart to move or resize it.
 func (p *PieChart) DataRange() (float64, float64, float64, float64) {
 	return -1, 1, -1, 1
 }
 
-// Thumbnail fulfills the plot.Thumbnailer interface.
+// Thumbnail fulfills the https://godoc.org/github.com/gonum/plot#Thumbnailer interface.
 func (p *PieChart) Thumbnail(c *draw.Canvas) {
 	pts := []vg.Point{
 		{X: c.Min.X, Y: c.Min.Y},

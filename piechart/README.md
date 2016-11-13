@@ -4,7 +4,7 @@ Pie chart plotter for [github.com/gonum/plot](https://github.com/gonum/plot) pac
 
 **Install** with `go get github.com/benoitmasson/plotters/piechart`, then **import** `github.com/benoitmasson/plotters/piechart` in your Go file, and finally **create** a new chart with `piechart.NewPieChart(plotter.Values{...})`.
 
-See [`piechart.go`](https://github.com/benoitmasson/plotters/blob/master/piechart/piechart.go#L32) for a complete documentation.
+See [documentation](https://godoc.org/github.com/benoitmasson/plotters/piechart) for a complete overview of the functionalities.
 
 ### Examples
 
