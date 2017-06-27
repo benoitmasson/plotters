@@ -63,11 +63,11 @@ type PieChart struct {
 		Value float64
 
 		// X is the length added to the X position of the pie.
-		// When the X offset is zero, the pie is centered horizontally..
+		// When the X offset is zero, the pie is centered horizontally.
 		X vg.Length
 
 		// Y is the length added to the Y position the pie.
-		// When the Y offset is zero, the pie is centered vertically..
+		// When the Y offset is zero, the pie is centered vertically.
 		Y vg.Length
 	}
 
