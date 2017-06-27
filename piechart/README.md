@@ -15,14 +15,14 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
     // Initialise chart
 	p, err := plot.New()
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 	p.HideAxes()
 
 	// Setup pie chart
 	pie, err := piechart.NewPieChart(plotter.Values{1, 2, 3, 2, 4})
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 	pie.Color = color.RGBA{255, 0, 0, 255}
 	p.Add(pie)
@@ -34,7 +34,7 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	// Initialise chart
 	p, err := plot.New()
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 	p.Legend.Top = true
 	p.HideAxes()
@@ -42,7 +42,7 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	// Setup pie charts
 	pie1, err := piechart.NewPieChart(plotter.Values{1, 2})
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 	pie1.Color = color.RGBA{255, 0, 0, 255}
 	pie1.Total = 12
@@ -54,7 +54,7 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 
 	pie2, err := piechart.NewPieChart(plotter.Values{3, 2})
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 	pie2.Color = color.RGBA{0, 255, 0, 255}
 	pie2.Offset.Value = 3
@@ -67,7 +67,7 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 
 	pie3, err := piechart.NewPieChart(plotter.Values{4})
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 	pie3.Color = color.RGBA{0, 0, 255, 255}
 	pie3.Offset.Value = 8
