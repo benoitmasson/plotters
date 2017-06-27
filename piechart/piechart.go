@@ -179,23 +179,25 @@ func (p *PieChart) Plot(c draw.Canvas, plt *plot.Plot) {
 		c.Stroke(path)
 
 		// write label at mid-arcAngle
-		labelText := ""
-		if p.Labels.Nominal == nil {
-			labelText = strconv.Itoa(i + 1)
-		} else if i < len(p.Labels.Nominal) {
-			labelText = p.Labels.Nominal[i]
-		}
-		if labelText != "" {
-			if p.Labels.Values.Show {
-				labelText += ": "
-				if p.Labels.Values.Percentage {
-					labelText += strconv.Itoa(int((v*100/totalValues)+0.5)) + "%"
-				} else {
-					labelText += strings.TrimRight(strconv.FormatFloat(v, 'f', 2, 64), "0.")
-				}
+		if p.Labels.Show {
+			labelText := ""
+			if p.Labels.Nominal == nil {
+				labelText = strconv.Itoa(i + 1)
+			} else if i < len(p.Labels.Nominal) {
+				labelText = p.Labels.Nominal[i]
 			}
-			labelPoint = rotatePoint(labelOrigin, origin, startAngle+arcAngle/2)
-			c.FillText(p.Labels.TextStyle, labelPoint, labelText)
+			if labelText != "" {
+				if p.Labels.Values.Show {
+					labelText += ": "
+					if p.Labels.Values.Percentage {
+						labelText += strconv.Itoa(int((v*100/totalValues)+0.5)) + "%"
+					} else {
+						labelText += strings.TrimRight(strconv.FormatFloat(v, 'f', 2, 64), "0.")
+					}
+				}
+				labelPoint = rotatePoint(labelOrigin, origin, startAngle+arcAngle/2)
+				c.FillText(p.Labels.TextStyle, labelPoint, labelText)
+			}
 		}
 
 		// next
