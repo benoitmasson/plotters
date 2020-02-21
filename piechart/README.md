@@ -2,19 +2,20 @@
 
 # Pie chart
 
-Pie chart plotter for [github.com/gonum/plot](https://github.com/gonum/plot) package.
+Pie chart plotter for [gonum.org/v1/plot](https://github.com/gonum/plot) package.
 
-**Install** with `go get github.com/benoitmasson/plotters/piechart`, then **import** `github.com/benoitmasson/plotters/piechart` in your Go file, and finally **create** a new chart with `piechart.NewPieChart(plotter.Values{...})`.
+**Import** `"github.com/benoitmasson/plotters/piechart"` in your Go file, then **create** a new chart with `piechart.NewPieChart(plotter.Values{...})`.
 
-See [documentation](https://godoc.org/github.com/benoitmasson/plotters/piechart) for a complete overview of the functionalities.
+See [documentation](https://godoc.org/github.com/benoitmasson/plotters/piechart) for a complete feature overview.
 
 ### Examples
 
 Such plots need to call `p.HideAxes()`, since axes are not relevant for this kind of chart.
 
 #### Basic usage
+
 ```go
-    // Initialise chart
+	// Initialise chart
 	p, err := plot.New()
 	if err != nil {
 		panic(err)
@@ -29,9 +30,11 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	pie.Color = color.RGBA{255, 0, 0, 255}
 	p.Add(pie)
 ```
-![basic](https://github.com/benoitmasson/plotters/blob/master/piechart/examples/basic.png)
+
+![basic](examples/basic.png)
 
 #### Advanced usage
+
 ```go
 	// Initialise chart
 	p, err := plot.New()
@@ -83,7 +86,8 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	p.Add(pie3)
 	p.Legend.Add("sample 3", pie3)
 ```
-![advanced](https://github.com/benoitmasson/plotters/blob/master/piechart/examples/advanced.png)
+
+![advanced](examples/advanced.png)
 
 ### License
 
