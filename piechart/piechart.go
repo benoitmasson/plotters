@@ -7,15 +7,13 @@
 package piechart
 
 import (
+	"gonum.org/v1/plot"
+	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/vg"
+	"gonum.org/v1/plot/vg/draw"
 	"image/color"
 	"math"
 	"strconv"
-	"strings"
-
-	"github.com/gonum/plot"
-	"github.com/gonum/plot/plotter"
-	"github.com/gonum/plot/vg"
-	"github.com/gonum/plot/vg/draw"
 )
 
 const (
@@ -192,7 +190,7 @@ func (p *PieChart) Plot(c draw.Canvas, plt *plot.Plot) {
 					if p.Labels.Values.Percentage {
 						labelText += strconv.Itoa(int((v*100/totalValues)+0.5)) + "%"
 					} else {
-						labelText += strings.TrimRight(strconv.FormatFloat(v, 'f', 2, 64), "0.")
+						labelText += strconv.FormatFloat(v, 'g', 2, 64)
 					}
 				}
 				labelPoint = rotatePoint(labelOrigin, origin, startAngle+arcAngle/2)
