@@ -1,3 +1,5 @@
+[![Licence](https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg)](COPYING)
+
 # Pie chart
 
 Pie chart plotter for [github.com/gonum/plot](https://github.com/gonum/plot) package.
@@ -82,3 +84,9 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	p.Legend.Add("sample 3", pie3)
 ```
 ![advanced](https://github.com/benoitmasson/plotters/blob/master/piechart/examples/advanced.png)
+
+### License
+
+GNU General Public License v3.0 or later.
+
+See [COPYING](COPYING) to see the full text.
