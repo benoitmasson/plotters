@@ -192,7 +192,7 @@ func (p *PieChart) Plot(c draw.Canvas, plt *plot.Plot) {
 					if p.Labels.Values.Percentage {
 						labelText += strconv.Itoa(int((v*100/totalValues)+0.5)) + "%"
 					} else {
-						labelText += strings.TrimRight(strconv.FormatFloat(v, 'f', 2, 64), "0.")
+						labelText += formatFloat(v)
 					}
 				}
 				labelPoint = rotatePoint(labelOrigin, origin, startAngle+arcAngle/2)
@@ -215,6 +215,10 @@ func sumValues(vs plotter.Values) float64 {
 
 func computeValueAngle(v, total float64) float64 {
 	return 2 * math.Pi * v / total
+}
+
+func formatFloat(v float64) string {
+	return strings.TrimRight(strings.TrimRight(strconv.FormatFloat(v, 'f', 2, 64), "0"), ".")
 }
 
 // rotatePoint rotates point pt by angle (in radians), with respect to
