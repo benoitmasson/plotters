@@ -7,6 +7,7 @@
 package piechart
 
 import (
+	"gonum.org/v1/plot/font"
 	"image/color"
 	"math"
 	"strconv"
@@ -25,14 +26,10 @@ const (
 	defaultPieChartFontSize      = 12
 )
 
-var defaultPieChartFont vg.Font
+var defaultPieChartFont font.Font
 
 func init() {
-	var err error
-	defaultPieChartFont, err = vg.MakeFont(defaultPieChartFontFamily, defaultPieChartFontSize)
-	if err != nil {
-		panic(err)
-	}
+	defaultPieChartFont = font.From(font.Font{Typeface: defaultPieChartFontFamily,  Variant: "Serif"}, defaultPieChartFontSize)
 }
 
 // PieChart presents data values as slices in a pie, with area
