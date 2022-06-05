@@ -13,7 +13,9 @@ import (
 	"strings"
 
 	"gonum.org/v1/plot"
+	"gonum.org/v1/plot/font"
 	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/text"
 	"gonum.org/v1/plot/vg"
 	"gonum.org/v1/plot/vg/draw"
 )
@@ -21,17 +23,19 @@ import (
 const (
 	defaultPieChartRadius        = 0.8
 	defaultPieChartLabelPosition = 0.8
-	defaultPieChartFontFamily    = "Times-Roman"
-	defaultPieChartFontSize      = 12
+
+	defaultPieChartFontFamily  = font.Typeface("Liberation")
+	defaultPieChartFontVariant = font.Variant("Serif")
+	defaultPieChartFontSize    = 12
 )
 
-var defaultPieChartFont vg.Font
+var defaultPieChartFont font.Font
 
 func init() {
-	var err error
-	defaultPieChartFont, err = vg.MakeFont(defaultPieChartFontFamily, defaultPieChartFontSize)
-	if err != nil {
-		panic(err)
+	defaultPieChartFont = font.Font{
+		Typeface: defaultPieChartFontFamily,
+		Variant:  defaultPieChartFontVariant,
+		Size:     defaultPieChartFontSize,
 	}
 }
 
@@ -137,6 +141,7 @@ func NewPieChart(vs plotter.Valuer) (*PieChart, error) {
 	pie.Labels.TextStyle.XAlign = draw.XCenter
 	pie.Labels.TextStyle.YAlign = draw.YCenter
 	pie.Labels.TextStyle.Font = defaultPieChartFont
+	pie.Labels.TextStyle.Handler = text.Plain{Fonts: font.DefaultCache}
 
 	return pie, nil
 }
