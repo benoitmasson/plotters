@@ -1,4 +1,5 @@
 [![Licence](https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg)](COPYING)
+[![Go Reference](https://pkg.go.dev/badge/github.com/benoitmasson/plotters/piechart.svg)](https://pkg.go.dev/github.com/benoitmasson/plotters/piechart)
 
 # Pie chart
 
@@ -6,7 +7,7 @@ Pie chart plotter for [gonum.org/v1/plot](https://github.com/gonum/plot) package
 
 **Import** `"github.com/benoitmasson/plotters/piechart"` in your Go file, then **create** a new chart with `piechart.NewPieChart(plotter.Values{...})`.
 
-See [documentation](https://godoc.org/github.com/benoitmasson/plotters/piechart) for a complete feature overview.
+See [documentation](https://pkg.go.dev/github.com/benoitmasson/plotters/piechart) for a complete feature overview.
 
 ### Examples
 
@@ -15,11 +16,8 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 #### Basic usage
 
 ```go
-	// Initialise chart
-	p, err := plot.New()
-	if err != nil {
-		panic(err)
-	}
+	// Initialize chart
+	p := plot.New()
 	p.HideAxes()
 
 	// Setup pie chart
@@ -27,7 +25,7 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	if err != nil {
 		panic(err)
 	}
-	pie.Color = color.RGBA{255, 0, 0, 255}
+	pie.Color = color.RGBA{200, 100, 100, 255} // red
 	p.Add(pie)
 ```
 
@@ -36,11 +34,8 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 #### Advanced usage
 
 ```go
-	// Initialise chart
-	p, err := plot.New()
-	if err != nil {
-		panic(err)
-	}
+	// Initialize chart
+	p := plot.New()
 	p.Legend.Top = true
 	p.HideAxes()
 
@@ -49,7 +44,7 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	if err != nil {
 		panic(err)
 	}
-	pie1.Color = color.RGBA{255, 0, 0, 255}
+	pie1.Color = color.RGBA{200, 100, 100, 255} // red
 	pie1.Total = 12
 	pie1.Labels.Nominal = []string{"one", "two"}
 	pie1.Labels.Values.Show = true
@@ -61,7 +56,7 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	if err != nil {
 		panic(err)
 	}
-	pie2.Color = color.RGBA{0, 255, 0, 255}
+	pie2.Color = color.RGBA{100, 200, 100, 255} // green
 	pie2.Offset.Value = 3
 	pie2.Total = 12
 	pie2.Labels.Nominal = []string{"three", "four"}
@@ -74,7 +69,7 @@ Such plots need to call `p.HideAxes()`, since axes are not relevant for this kin
 	if err != nil {
 		panic(err)
 	}
-	pie3.Color = color.RGBA{0, 0, 255, 255}
+	pie3.Color = color.RGBA{100, 100, 200, 255} // blue
 	pie3.Offset.Value = 8
 	pie3.Total = 12
 	pie3.Offset.X = vg.Length(10)
